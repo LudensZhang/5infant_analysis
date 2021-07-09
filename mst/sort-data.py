@@ -3,12 +3,12 @@ import pandas as pd
 
 
 if __name__ == '__main__':
-    os.mkdir('5-years')
-    os.mkdir('12-months')
-    os.mkdir('5-years/cesarean-section')
-    os.mkdir('5-years/verginal-delivery')
-    os.mkdir('12-months/cesarean-section')
-    os.mkdir('12-months/verginal-delivery')
+    # os.mkdir('5-years')
+    # os.mkdir('12-months')
+    # os.mkdir('5-years/cesarean-section')
+    # os.mkdir('5-years/verginal-delivery')
+    # os.mkdir('12-months/cesarean-section')
+    # os.mkdir('12-months/verginal-delivery')
     
     metadata_withbirth = pd.read_csv('meta_withbirth.csv')
     metadata = pd.read_csv('metadata.csv')
@@ -28,9 +28,9 @@ if __name__ == '__main__':
     C_abundance.insert(0, 'Samples', abundance['Samples'])
     
     for i in C_metadata.index:
-        if ':5Y' in C_metadata.loc[i, 'Env']:
+        if '5Y' in C_metadata.loc[i, 'Env']:
             C_5Y_queries.append(i)
-        elif ':12M' in C_metadata.loc[i, 'Env']:
+        elif '12M' in C_metadata.loc[i, 'Env']:
             C_12M_queries.append(i)
         else:
             C_sources.append(i)
@@ -60,13 +60,14 @@ if __name__ == '__main__':
             V_index.append(i)
     V_metadata = metadata.loc[V_index]
     V_metadata.columns = ['SampleID', 'Env']
+    metadata['Env'] = metadata['Env'].apply(lambda x: f'root:{x}')
     V_abundance = abundance[V_metadata['SampleID']]
     V_abundance.insert(0, 'Samples', abundance['Samples'])
     
     for i in V_metadata.index:
-        if ':5Y' in V_metadata.loc[i, 'Env']:
+        if '5Y' in V_metadata.loc[i, 'Env']:
             V_5Y_queries.append(i)
-        elif ':12M' in V_metadata.loc[i, 'Env']:
+        elif '12M' in V_metadata.loc[i, 'Env']:
             V_12M_queries.append(i)
         else:
             V_sources.append(i)
@@ -103,6 +104,8 @@ if __name__ == '__main__':
     V_12M_abundance.to_csv('12-months/verginal-delivery/queries.tsv', sep='\t', index=0)
     V_sources_abundance.to_csv('5-years/verginal-delivery/sources.tsv', sep='\t', index=0)
     V_sources_abundance.to_csv('12-months/verginal-delivery/sources.tsv', sep='\t', index=0)
+    
+
     
     
           
