@@ -18,6 +18,9 @@ if __name__ == '__main__':
     transfer_evaluation['mode'] = 'transfer'
     
     whole_evaluation = pd. concat([transfer_evaluation, independent_evaluation])
+    # whole_evaluation.to_csv('plot-data.csv', index = 0)
+    whole_evaluation = whole_evaluation.groupby('Env').filter(lambda x: ':V' in x)
+    print(whole_evaluation)
     
     box_fig = (ggplot(whole_evaluation, aes(x='Env', y='ROC-AUC', fill='mode'))
                +geom_boxplot(show_legend=1)
