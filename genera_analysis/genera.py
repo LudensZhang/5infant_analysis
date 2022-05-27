@@ -89,13 +89,15 @@ plot_1 = (ggplot(plot_df_1, aes(x = 'Age', y = 'Abundance', linetype = 'index', 
             geom_line() +
             scale_y_log10() +
             scale_color_manual(['#E7F0CA', '#63703C', '#E7F0CA', '#63703C', '#E7F0CA', '#63703C', '#E7F0CA']) +
-            scale_linetype_manual(['-', '--', '-.', ':', '-', '--', '-.']) +
+            scale_linetype_manual(['-', '-', '--', '--', '-.', '-.', ':']) +
             xlim(['NB', '4M', '12M', '3Y', '5Y']) +
             ylab('Mean log10 relative abundance') +
             theme_bw() +
             theme(legend_title = element_blank(),
                     text = element_text(size = 10),
-                    axis_text = element_text(size = 10, color = 'black')))
+                    axis_text = element_text(size = 10, color = 'black'),
+                    panel_grid_major = element_blank(),
+                    panel_grid_minor = element_blank()))
 
 plot_1.save('trajectory_1.jpg', height = 70, width = 100, units = ('mm'), dpi = 300)
 
@@ -104,13 +106,15 @@ plot_2 = (ggplot(plot_df_2, aes(x = 'Age', y = 'Abundance', linetype = 'index', 
             geom_line() +
             scale_y_log10() +
             scale_color_manual(['#706C4B', '#F0E159', '#706C4B', '#F0E159', '#706C4B', '#F0E159', '#706C4B']) +
-            scale_linetype_manual(['-', '--', '-.', ':', '-', '--', '-.']) +
+            scale_linetype_manual(['-', '-', '--', '--', '-.', '-.', ':']) +
             xlim(['NB', '4M', '12M', '3Y', '5Y']) +
             ylab('Mean log10 relative abundance') +
             theme_bw() +
             theme(legend_title = element_blank(),
                     text = element_text(size = 10),
-                    axis_text = element_text(size = 10, color = 'black')))
+                    axis_text = element_text(size = 10, color = 'black'),
+                    panel_grid_major = element_blank(),
+                    panel_grid_minor = element_blank()))
 
 plot_2.save('trajectory_2.jpg', height = 70, width = 100, units = ('mm'), dpi = 300)
 
@@ -119,13 +123,15 @@ plot_3 = (ggplot(plot_df_3, aes(x = 'Age', y = 'Abundance', linetype = 'index', 
             geom_line() +
             scale_y_log10() +
             scale_color_manual(['#57231B', '#DD9287', '#57231B', '#DD9287', '#57231B', '#DD9287', '#57231B']) +
-            scale_linetype_manual(['-', '--', '-.', ':', '-', '--', '-.']) +
+            scale_linetype_manual(['-', '-', '--', '--', '-.', '-.', ':']) +
             xlim(['NB', '4M', '12M', '3Y', '5Y']) +
             ylab('Mean log10 relative abundance') +
             theme_bw() +
             theme(legend_title = element_blank(),
                     text = element_text(size = 10),
-                    axis_text = element_text(size = 10, color = 'black')))
+                    axis_text = element_text(size = 10, color = 'black'),
+                    panel_grid_major = element_blank(),
+                    panel_grid_minor = element_blank()))
 
 plot_3.save('trajectory_3.jpg', height = 70, width = 100, units = ('mm'), dpi = 300)
 
@@ -134,13 +140,15 @@ plot_4 = (ggplot(plot_df_4, aes(x = 'Age', y = 'Abundance', linetype = 'index', 
             geom_line() +
             scale_y_log10() +
             scale_color_manual(['#1C4E57', '#89D0DD', '#1C4E57', '#89D0DD', '#1C4E57', '#89D0DD', '#1C4E57']) +
-            scale_linetype_manual(['-', '--', '-.', ':', '-', '--', '-.']) +
+            scale_linetype_manual(['-', '-', '--', '--', '-.', '-.', ':']) +
             xlim(['NB', '4M', '12M', '3Y', '5Y']) +
             ylab('Mean log10 relative abundance') +
             theme_bw() +
             theme(legend_title = element_blank(),
                     text = element_text(size = 10),
-                    axis_text = element_text(size = 10, color = 'black')))
+                    axis_text = element_text(size = 10, color = 'black'),
+                    panel_grid_major = element_blank(),
+                    panel_grid_minor = element_blank()))
 
 plot_4.save('trajectory_4.jpg', height = 70, width = 100, units = ('mm'), dpi = 300)
 
