@@ -4,9 +4,6 @@ import matplotlib
 import pandas as pd
 import numpy as np
 from plotnine import*
-import seaborn as sns
-import matplotlib as mpl
-import matplotlib.pyplot as plt
 
 abundance =  pd.read_csv('../8folds/abundance.csv', index_col = 0)
 file_report = pd.read_csv('../file_report.txt', sep = '\t', index_col = 1)['sample_alias']
