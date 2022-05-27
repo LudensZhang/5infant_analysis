@@ -1,6 +1,12 @@
+from curses import color_content
+from matplotlib import units
+import matplotlib
 import pandas as pd
 import numpy as np
 from plotnine import*
+import seaborn as sns
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 abundance =  pd.read_csv('../8folds/abundance.csv', index_col = 0)
 file_report = pd.read_csv('../file_report.txt', sep = '\t', index_col = 1)['sample_alias']
@@ -72,7 +78,7 @@ def CalculateTrajectory(trajectory):
             if genera in tax:
                 trajectory_df.loc[genera] += age_df.loc[tax]
 
-    return trajectory_df
+    return (trajectory_df/120).reset_index(drop = False).melt(id_vars = 'index', var_name = 'Age', value_name = 'Abundance')
         
     
 plot_df_1 = CalculateTrajectory(trajectory_1)
@@ -81,3 +87,63 @@ plot_df_3 = CalculateTrajectory(trajectory_3)
 plot_df_4 = CalculateTrajectory(trajectory_4)
 
 # Plot
+plot_1 = (ggplot(plot_df_1, aes(x = 'Age', y = 'Abundance', linetype = 'index', color = 'index', group = 'index')) +
+            # geom_point(aes(fill = 'index', color = 'index')) +
+            geom_line() +
+            scale_y_log10() +
+            scale_color_manual(['#E7F0CA', '#63703C', '#E7F0CA', '#63703C', '#E7F0CA', '#63703C', '#E7F0CA']) +
+            scale_linetype_manual(['-', '--', '-.', ':', '-', '--', '-.']) +
+            xlim(['NB', '4M', '12M', '3Y', '5Y']) +
+            ylab('Mean log10 relative abundance') +
+            theme_bw() +
+            theme(legend_title = element_blank(),
+                    text = element_text(size = 10),
+                    axis_text = element_text(size = 10, color = 'black')))
+
+plot_1.save('trajectory_1.jpg', height = 70, width = 100, units = ('mm'), dpi = 300)
+
+plot_2 = (ggplot(plot_df_2, aes(x = 'Age', y = 'Abundance', linetype = 'index', color = 'index', group = 'index')) +
+            # geom_point(aes(fill = 'index', color = 'index')) +
+            geom_line() +
+            scale_y_log10() +
+            scale_color_manual(['#706C4B', '#F0E159', '#706C4B', '#F0E159', '#706C4B', '#F0E159', '#706C4B']) +
+            scale_linetype_manual(['-', '--', '-.', ':', '-', '--', '-.']) +
+            xlim(['NB', '4M', '12M', '3Y', '5Y']) +
+            ylab('Mean log10 relative abundance') +
+            theme_bw() +
+            theme(legend_title = element_blank(),
+                    text = element_text(size = 10),
+                    axis_text = element_text(size = 10, color = 'black')))
+
+plot_2.save('trajectory_2.jpg', height = 70, width = 100, units = ('mm'), dpi = 300)
+
+plot_3 = (ggplot(plot_df_3, aes(x = 'Age', y = 'Abundance', linetype = 'index', color = 'index', group = 'index')) +
+            # geom_point(aes(fill = 'index', color = 'index')) +
+            geom_line() +
+            scale_y_log10() +
+            scale_color_manual(['#57231B', '#DD9287', '#57231B', '#DD9287', '#57231B', '#DD9287', '#57231B']) +
+            scale_linetype_manual(['-', '--', '-.', ':', '-', '--', '-.']) +
+            xlim(['NB', '4M', '12M', '3Y', '5Y']) +
+            ylab('Mean log10 relative abundance') +
+            theme_bw() +
+            theme(legend_title = element_blank(),
+                    text = element_text(size = 10),
+                    axis_text = element_text(size = 10, color = 'black')))
+
+plot_3.save('trajectory_3.jpg', height = 70, width = 100, units = ('mm'), dpi = 300)
+
+plot_4 = (ggplot(plot_df_4, aes(x = 'Age', y = 'Abundance', linetype = 'index', color = 'index', group = 'index')) +
+            # geom_point(aes(fill = 'index', color = 'index')) +
+            geom_line() +
+            scale_y_log10() +
+            scale_color_manual(['#1C4E57', '#89D0DD', '#1C4E57', '#89D0DD', '#1C4E57', '#89D0DD', '#1C4E57']) +
+            scale_linetype_manual(['-', '--', '-.', ':', '-', '--', '-.']) +
+            xlim(['NB', '4M', '12M', '3Y', '5Y']) +
+            ylab('Mean log10 relative abundance') +
+            theme_bw() +
+            theme(legend_title = element_blank(),
+                    text = element_text(size = 10),
+                    axis_text = element_text(size = 10, color = 'black')))
+
+plot_4.save('trajectory_4.jpg', height = 70, width = 100, units = ('mm'), dpi = 300)
+

@@ -18,7 +18,9 @@ if __name__ == '__main__':
                     geom_point() +
                     xlim(-0.6, 0.6) +
                     ylim(-0.6, 0.6) +
-                    theme(panel_grid_major = element_blank(), panel_grid_minor = element_blank(), panel_background = element_blank()) +
+                    theme(panel_grid_major = element_blank(), 
+							panel_grid_minor = element_blank(), 
+							panel_background = element_blank()) +
 			        theme(axis_line = element_line(color="gray", size = 1)) +
                     theme(legend_title = element_blank()) +
 			        xlab('PC1') +
